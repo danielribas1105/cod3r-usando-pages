@@ -10,8 +10,8 @@ export default function Menu() {
       return (
          <li
             className={`${
-               ativo ? 'bg-pink-800' : 'bg-pink-500'
-            } px-4 py-3 rounded-lg text-xl`}
+               ativo ? 'bg-purple-800' : 'bg-purple-500'
+            } px-3 py-2 rounded-lg text-lg`}
          >
             <Link href={url} locale={locale}>
                {texto}
@@ -20,7 +20,7 @@ export default function Menu() {
       )
    }
    return (
-      <ul className="flex gap-3">
+      <ul className="flex flex-wrap gap-3 justify-center">
          {renderizarItem('/rotas/basicas', 'Rota Básica', 'pt')}
          {renderizarItem('/rotas/basicas/aninhada', 'Rota Aninhada', 'pt')}
          {renderizarItem('/rotas/dinamicas/produto/3', 'Produto #3', 'pt')}
@@ -37,6 +37,13 @@ export default function Menu() {
          )}
          {renderizarItem('/rotas/i18n/saudacao', 'Saudação PT', 'pt')}
          {renderizarItem('/rotas/i18n/saudacao', 'Saudação EN', 'en')}
+         {renderizarItem('/render/ssg/simples', 'SSG Simples', 'pt')}
+         {renderizarItem('/render/ssg/filme', 'SSG Filme', 'pt')}
+         {renderizarItem('/render/ssg/personagem', 'Personagem', 'pt')}
+         {renderizarItem('/render/ssg/produtos', 'Produtos SSG', 'pt')}
+         {renderizarItem('/render/isr', 'Produtos ISR', 'pt')}
+         {renderizarItem('/render/ssr', 'Produtos SSR', 'pt')}
+         {renderizarItem('/render/ssg/id', 'Catálogo', 'pt')}
       </ul>
    )
 }
