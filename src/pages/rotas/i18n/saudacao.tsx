@@ -1,14 +1,13 @@
 import Pagina from '@/components/pagina'
+import textos from '@/data/textos'
 import { useRouter } from 'next/router'
 
-export default function PaginaProdutoPorId() {
+export default function PaginaSaldacao() {
    const router = useRouter()
 
    return (
       <Pagina>
-         <div>
-            <p>Produto: {router.query.id}</p>
-         </div>
+         <div>{textos[router.locale ?? 'pt'].saudacao}</div>
       </Pagina>
    )
 }
