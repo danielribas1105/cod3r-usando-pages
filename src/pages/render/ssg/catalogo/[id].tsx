@@ -3,8 +3,16 @@ import Filme from '@/components/filme'
 import Pagina from '@/components/pagina'
 import filmes from '@/data/filmes'
 
-export function getStaticProps() {
-   const i = 1
+export function getStaticPaths() {
+   const paths = filmes.slice(0, 5).map((filme) => {
+      return { params: { id: filme.id } }
+   })
+   return { paths, fallback: true } //com fallback true gera o conteúdo sobre demanda
+}
+
+export function getStaticProps({ params }: any) {
+   const i = filmes.findIndex((filme) => filme.id === params.id)
+
    return {
       props: {
          filme: filmes[i],
@@ -18,14 +26,17 @@ export function getStaticProps() {
 
 export default function PaginaCatalogo(props: any) {
    const { filme, numero, total, idAnterior, proximoId } = props
+
+   if (!filme) return null
+
    return (
       <Pagina>
          <Filme
             id={filme.id}
-            titulo={filme.titulo}
-            subtitulo={filme.subtitulo}
-            imagem={filme.imagem}
-            descricao={filme.descricao}
+            titulo={filme.Titulo}
+            subtitulo={filme.Subtitulo}
+            imagem={filme.Imagem}
+            descricao={filme.Descricao}
          />
          <div className="flex gap-3 mt-4">
             {idAnterior && (
